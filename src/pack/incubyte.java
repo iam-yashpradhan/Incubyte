@@ -6,7 +6,9 @@ public class incubyte {
         if(numbers.equals(""))
             return  0;
         String temp[]=numbers.split(",");
-        sum=Integer.parseInt(temp[0])+Integer.parseInt(temp[1]);
+        for(int i=0;i< temp.length;i++){
+            sum+=Integer.parseInt(temp[i]);
+        }
         return sum;
     }
 
