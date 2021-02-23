@@ -1,7 +1,9 @@
 package pack;
 
+import java.util.ArrayList;
+
 public class incubyte {
-    public static int Add(String numbers){
+    public static int Add(String numbers) throws Exception {
         int sum=0;String temp[];
         if(numbers.equals(""))
             return  0;
@@ -15,14 +17,28 @@ public class incubyte {
         }else{
             return Integer.parseInt(numbers);
         }
+        boolean neg=false;
+        ArrayList<Integer> negs=new ArrayList<>();
         for(int i=0;i< temp.length;i++){
-            sum+=Integer.parseInt(temp[i]);
+            if(!temp[i].equals("")){
+                int a=Integer.parseInt(temp[i]);
+                if(a<0){
+                    neg=true;
+                    negs.add(a);
+                }else {
+                    sum += a;
+                }
+            }
+        }
+        if(neg){
+            throw new Exception("Negatives not allowed "+negs.toString());
         }
         return sum;
     }
 
-    public static void main(String args[]){
-        String test="//;\n2;4";
+    public static void main(String args[]) throws Exception {
+        String test="//;\n2;-4;-4";
         System.out.println(Add(test));
     }
 }
+
